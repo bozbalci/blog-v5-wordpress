@@ -1,0 +1,130 @@
+/**
+ * Base typography
+ */
+
+body {
+  color: rgb(0, 0, 0);
+  //background: url("images/noise.jpg");
+  font-size: 21px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+p {
+  max-width: 65ch;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+h1 {
+  font-size: 1em;
+}
+
+h2, h3 {
+  font-size: 1em;
+  margin-top: 1em;
+  margin-bottom: 0.4em;
+}
+
+/**
+ * Links
+ */
+
+a, a:visited, a:hover, a:active {
+  color: var(--color-primary-950);
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/**
+ * Lists
+ */
+//ol {
+//  counter-reset: i;
+//  list-style: none;
+//}
+//
+//ol li {
+//  position: relative;
+//  counter-increment: i;
+//}
+//
+//ol li::before {
+//  content: counter(i);
+//}
+
+/**
+ * Utilities
+ */
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper {
+  width: var(--wrapper-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.text-2xs {
+  font-size: var(--step-m-2);
+}
+
+.text-xs {
+  font-size: var(--step-m-1);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/*
+ * Layouts
+ */
+
+.site-title {
+  color: var(--color-primary-600);
+}
+
+#main-content > article {
+  border-top: 1px solid #cacaca;
+  border-bottom: 1px solid #cacaca;
+  padding-top: var(--space-m);
+  padding-bottom: var(--space-m);
+}
+
+
+/**
+ * Header and footer
+ */
+header {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+footer {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+}

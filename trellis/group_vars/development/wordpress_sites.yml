@@ -1,0 +1,18 @@
+# Created by trellis-cli v1.11.1
+# Documentation: https://roots.io/trellis/docs/wordpress-sites/
+
+wordpress_sites:
+  bozbalci.me:
+    site_hosts:
+    - canonical: bozbalci.test
+      redirects:
+      - www.bozbalci.test
+    local_path: ../site
+    admin_email: admin@bozbalci.test
+    multisite:
+      enabled: false
+    ssl:
+      enabled: false
+      provider: self-signed
+    cache:
+      enabled: false
