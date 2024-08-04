@@ -1,0 +1,131 @@
+@use 'sass:map';
+@use '../global/variables';
+
+.no-underline {
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  gap: var(--gutter);
+}
+
+.grid-cols-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mx-auto {
+  margin-inline: auto;
+}
+
+.ml-auto {
+  margin-inline-start: auto;
+}
+
+@each $size in map.get(variables.$space-scales, 'sizes') {
+  $label: map.get($size, 'label');
+
+  .space-x-#{$label} > * + * {
+    margin-inline-start: var(--space-#{$label});
+  }
+
+  .ml-#{$label} {
+    margin-inline-start: var(--space-#{$label});
+  }
+
+  .mr-#{$label} {
+    margin-inline-end: var(--space-#{$label});
+  }
+
+  .mx-#{$label} {
+    margin-inline: var(--space-#{$label});
+  }
+
+  .mt-#{$label} {
+    margin-block-start: var(--space-#{$label});
+  }
+
+  .mb-#{$label} {
+    margin-block-end: var(--space-#{$label});
+  }
+
+  .my-#{$label} {
+    margin-block: var(--space-#{$label});
+  }
+
+  .m-#{$label} {
+    margin: var(--space-#{$label});
+  }
+
+  .pl-#{$label} {
+    padding-inline-start: var(--space-#{$label});
+  }
+
+  .pr-#{$label} {
+    padding-inline-end: var(--space-#{$label});
+  }
+
+  .px-#{$label} {
+    padding-inline: var(--space-#{$label});
+  }
+
+  .pt-#{$label} {
+    padding-block-start: var(--space-#{$label});
+  }
+
+  .pb-#{$label} {
+    padding-block-end: var(--space-#{$label});
+  }
+
+  .py-#{$label} {
+    padding-block: var(--space-#{$label});
+  }
+
+  .p-#{$label} {
+    padding: var(--space-#{$label});
+  }
+}
+
+@each $size in map.get(variables.$space-scales, 'oneUpPairs') {
+  // --space-#{map.get($size, "label")}: #{map.get($size, 'clamp')};
+}
+
+@each $size in map.get(variables.$space-scales, 'customPairs') {
+  // --space-#{map.get($size, "label")}: #{map.get($size, 'clamp')};
+}

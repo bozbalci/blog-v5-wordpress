@@ -1,0 +1,17 @@
+.image-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-s);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  line-height: var(--line-height-tight);
+}
+
+.e-title {
+  font-style: italic;
+}
+
+.e-taken {
+  color: var(--gray-10);
+}

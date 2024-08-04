@@ -8,8 +8,8 @@ wordpress_sites:
       redirects:
       - www.bozbalci.me
     local_path: ../site
-    branch: master
-    repo: git@github.com:example/example.com.git
+    branch: main
+    repo: git@github.com:bozbalci/bozbalci.me.git
     repo_subtree_path: site
     multisite:
       enabled: false
