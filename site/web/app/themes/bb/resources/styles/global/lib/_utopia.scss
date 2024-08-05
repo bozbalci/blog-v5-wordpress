@@ -1,8 +1,0 @@
-/*
- * TODO: I would really love to use the @use pkg syntax here, but PhpStorm can't
- * resolve the dependency nicely.
- *
- * @use 'pkg:utopia-core-scss/src/utopia' as utopia;
- */
-
-@forward '~utopia-core-scss/src/utopia';
