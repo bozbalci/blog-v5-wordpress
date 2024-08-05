@@ -15,7 +15,7 @@
     },
     {
       "type": "vcs",
-      "url": "git@github.com:bozbalci/bb.git"
+      "url": "https://github.com/bozbalci/bb.git"
     }
   ],
   "require": {

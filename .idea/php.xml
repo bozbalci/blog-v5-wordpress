@@ -15,23 +15,6 @@
       <PhpCSConfiguration beautifier_path="$PROJECT_DIR$/site/vendor/bin/phpcbf" tool_path="$PROJECT_DIR$/site/vendor/bin/phpcs" />
     </phpcs_settings>
   </component>
-  <component name="PhpIncludePathManager">
-    <include_path>
-      <path value="$PROJECT_DIR$/site/vendor/roots/wp-password-bcrypt" />
-      <path value="$PROJECT_DIR$/site/vendor/roots/wp-config" />
-      <path value="$PROJECT_DIR$/site/vendor/roots/bedrock-autoloader" />
-      <path value="$PROJECT_DIR$/site/vendor/phpoption/phpoption" />
-      <path value="$PROJECT_DIR$/site/vendor/oscarotero/env" />
-      <path value="$PROJECT_DIR$/site/vendor/roots/wordpress-core-installer" />
-      <path value="$PROJECT_DIR$/site/vendor/symfony/polyfill-mbstring" />
-      <path value="$PROJECT_DIR$/site/vendor/symfony/polyfill-php80" />
-      <path value="$PROJECT_DIR$/site/vendor/symfony/polyfill-ctype" />
-      <path value="$PROJECT_DIR$/site/vendor/squizlabs/php_codesniffer" />
-      <path value="$PROJECT_DIR$/site/vendor/graham-campbell/result-type" />
-      <path value="$PROJECT_DIR$/site/vendor/vlucas/phpdotenv" />
-      <path value="$PROJECT_DIR$/site/vendor/composer" />
-    </include_path>
-  </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
