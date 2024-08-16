@@ -1,0 +1,108 @@
+@use 'sass:map';
+@use 'lib/utopia' as utopia;
+@use 'lib/radix-ui-colors';
+
+$accent-color: 'jade';
+$gray-color: 'olive';
+$type-scales: utopia.calculateTypeScale(
+  (
+    'minWidth': 320,
+    'maxWidth': 1200,
+    'minFontSize': 16,
+    'maxFontSize': 20,
+    'minTypeScale': 1.2,
+    'maxTypeScale': 1.25,
+    'positiveSteps': 5,
+    'negativeSteps': 2,
+  )
+);
+$space-scales: utopia.calculateSpaceScale(
+  (
+    'minWidth': 320,
+    'maxWidth': 1200,
+    'minSize': 16,
+    'maxSize': 20,
+    'positiveSteps': (
+      1.5,
+      2,
+      3,
+      4,
+      6,
+    ),
+    'negativeSteps': (
+      0.75,
+      0.5,
+      0.25,
+    ),
+  )
+);
+
+:root {
+  /*
+   * Type scale
+   */
+  @each $step in $type-scales {
+    --step-#{map.get($step, "step")}: #{map.get($step, 'clamp')};
+  }
+
+  /*
+   * Space scale variables
+   */
+  @each $size in map.get($space-scales, 'sizes') {
+    --space-#{map.get($size, "label")}: #{map.get($size, 'clamp')};
+  }
+
+  @each $size in map.get($space-scales, 'oneUpPairs') {
+    --space-#{map.get($size, "label")}: #{map.get($size, 'clamp')};
+  }
+
+  @each $size in map.get($space-scales, 'customPairs') {
+    --space-#{map.get($size, "label")}: #{map.get($size, 'clamp')};
+  }
+
+  /*
+   * Spaces
+   */
+  --wrapper-width: clamp(16rem, 93vw, 77.5rem);
+  --gutter: var(--space-s-m);
+
+  /**
+   * Fonts
+   */
+  --font-sans: intervariable, -apple-system, blinkmacsystemfont, avenir next,
+    avenir, segoe ui, helvetica neue, helvetica, cantarell, ubuntu, roboto, noto,
+    arial, sans-serif;
+  --font-serif: charter, iowan old style, apple garamond, baskerville,
+    times new roman, droid serif, times, source serif pro, serif,
+    apple color emoji, segoe ui emoji, segoe ui symbol;
+  --font-mono: ml, menlo, consolas, monaco, liberation mono, lucida console,
+    monospace;
+
+  /*
+   * Leading
+   */
+  --line-height-single: 1;
+  --line-height-display: 1.1;
+  --line-height-tight: 1.3;
+  --line-height-snug: 1.4;
+  --line-height-body: 1.5;
+}
+
+/**
+ * Converts colors from one source to the other
+ */
+@mixin remap-colors($target, $source, $steps) {
+  @for $i from 1 through $steps {
+    --#{$target}-#{$i}: var(--#{$source}-#{$i});
+  }
+}
+
+body {
+  /**
+   * Colors are placed in the body because the dark-mode override
+   * happens via body classes. TODO Move this to the html tag.
+   */
+
+  @include remap-colors(accent, $accent-color, 12);
+  @include remap-colors('gray', $gray-color, 12);
+}

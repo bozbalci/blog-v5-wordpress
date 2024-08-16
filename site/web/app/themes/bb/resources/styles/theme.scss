@@ -1,0 +1,19 @@
+// Globals
+@use 'global/variables';
+@use 'global/fonts';
+@use 'global/normalize';
+@use 'global/lib/dependencies';
+
+// Utilities
+@use 'utilities/visually-hidden';
+@use 'utilities/utilities';
+
+// Base
+@use 'base';
+@use 'typography';
+
+// Components
+@use 'layout/header';
+@use 'layout/footer';
+@use 'components/gallery';
+@use 'components/single-photo';
