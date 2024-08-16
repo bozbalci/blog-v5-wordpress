@@ -38,7 +38,8 @@ class ContentSinglePhoto extends Composer
             "exif_shutter" => $this->formatShutterSpeed($meta["shutter_speed"]),
             "exif_focal_length" => $this->formatFocalLength($meta["focal_length"]),
             "exif_shot_at" => date("F j, Y", $meta["created_timestamp"]),
-            "terms" => wp_get_post_terms(get_the_ID(), "photo-album")
+            "terms" => wp_get_post_terms(get_the_ID(), "photo-album"),
+            "title" => get_the_title(),
         ];
     }
 

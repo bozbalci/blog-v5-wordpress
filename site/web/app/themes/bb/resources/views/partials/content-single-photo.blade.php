@@ -21,9 +21,11 @@
         </div>
       </div>
       <div class="text-right">
-        <div>
-          <span class="e-title">&ldquo;{{ get_the_title() }}&rdquo;</span>
-        </div>
+        @if(!empty($title))
+          <div>
+            <span class="e-title">&ldquo;{{ $title }}&rdquo;</span>
+          </div>
+        @endif
         <div>
           <span class="e-uploaded">Uploaded on <time>{{ get_the_date() }}</time></span>
         </div>
