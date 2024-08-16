@@ -32,7 +32,7 @@ define('BB_ASSETS_URI', BB_URI . '/dist');
 |
 */
 
-if (! file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+if (!file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
     wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'sage'));
 }
 
@@ -50,12 +50,12 @@ require $composer;
 |
 */
 
-if (! function_exists('\Roots\bootloader')) {
+if (!function_exists('\Roots\bootloader')) {
     wp_die(
         __('You need to install Acorn to use this theme.', 'sage'),
         '',
         [
-            'link_url' => 'https://roots.io/acorn/docs/installation/',
+            'link_url'  => 'https://roots.io/acorn/docs/installation/',
             'link_text' => __('Acorn Docs: Installation', 'sage'),
         ]
     );
@@ -77,17 +77,16 @@ if (! function_exists('\Roots\bootloader')) {
 
 collect(['setup', 'filters'])
     ->each(function ($file) {
-        if (! locate_template($file = "app/{$file}.php", true, true)) {
+        if (!locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
-                /* translators: %s is replaced with the relative file path */
+            /* translators: %s is replaced with the relative file path */
                 sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
             );
         }
     });
 
 if (!function_exists('bb')) {
-    function bb(): \App\BB\BB
-    {
+    function bb(): \App\BB\BB {
         return \App\BB\BB::get();
     }
 }
