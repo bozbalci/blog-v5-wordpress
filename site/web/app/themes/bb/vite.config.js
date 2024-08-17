@@ -1,41 +1,43 @@
 import path from 'path';
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
+import laravel from "laravel-vite-plugin";
 
-const ROOT = path.resolve('../../../');
-const BASE = __dirname.replace(ROOT, '');
+const SITE_ABSOLUTE_PATH = path.resolve('../../../');
+const THEME_RELATIVE_PATH = __dirname.replace(SITE_ABSOLUTE_PATH, '');
 
+// noinspection JSUnusedGlobalSymbols
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? `${BASE}/dist/` : '',
+  base: process.env.NODE_ENV === 'production' ? `${THEME_RELATIVE_PATH}/dist/` : '',
   build: {
-    manifest: 'manifest.json',
-    assetsDir: '.',
-    outDir: `dist`,
+    assetsDir: ".",
+    outDir: "dist",
     emptyOutDir: true,
     sourcemap: true,
     rollupOptions: {
-      input: ['resources/scripts/entry.js', 'resources/styles/theme.scss'],
       output: {
         entryFileNames: '[hash].js',
         assetFileNames: '[hash].[ext]',
       },
-    },
+    }
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        quietDeps: true,
-      },
-    },
-  },
+  assetsInclude: ["resources/images/**/*.svg", "resources/images/**/*.png"],
   plugins: [
-    {
-      name: 'php',
-      handleHotUpdate({ file, server }) {
-        if (file.endsWith('.php')) {
-          server.ws.send({ type: 'full-reload' });
-        }
-      },
-    },
+    // {
+    //   name: 'php',
+    //   handleHotUpdate({file, server}) {
+    //     if (file.endsWith('.php')) {
+    //       server.ws.send({type: 'full-reload'});
+    //     }
+    //   },
+    // },
+    laravel({
+      input: ['resources/styles/theme.scss', 'resources/scripts/entry.js'],
+      refresh: [
+        "resources/**"
+      ],
+      buildDirectory: "dist",
+      hotFile: "dist/hot",
+    })
   ],
   resolve: {
     alias: [
@@ -43,6 +45,20 @@ export default defineConfig({
         find: /~(.+)/,
         replacement: process.cwd() + '/node_modules/$1',
       },
+      {
+        find: /@(.+)/,
+        replacement: '/resources/scripts/$1'
+      }
     ],
+  },
+  /**
+   * Language settings
+   */
+  css: {
+    preprocessorOptions: {
+      scss: {
+        quietDeps: true,
+      },
+    },
   },
 });

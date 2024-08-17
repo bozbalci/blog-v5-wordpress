@@ -1,12 +1,22 @@
 <?php
 
-namespace App\BB\Features;
+namespace App\Providers;
 
-use App\BB\Attributes\Action;
-use App\BB\Attributes\Filter;
 
-class Exif
-{
+use App\Attributes\Action;
+use App\Attributes\Filter;
+use App\WpUtilities\Hooks;
+use Illuminate\Support\ServiceProvider;
+use Throwable;
+
+class ExifServiceProvider extends ServiceProvider {
+    public function register(): void {
+    }
+
+    public function boot(): void {
+        Hooks::apply($this);
+    }
+
     #[Filter("wp_read_image_metadata", 10, 5)]
     public function extendImageMetadata(
         array $meta,
@@ -38,8 +48,7 @@ class Exif
     }
 
     #[Action("admin_menu")]
-    public function createAdminSubmenuPage(): void
-    {
+    public function createAdminSubmenuPage(): void {
         add_submenu_page(
             "tools.php",
             "Rescan EXIF",
@@ -50,38 +59,28 @@ class Exif
         );
     }
 
-    public function getAdminSubmenuContents(): void
-    {
-        ?>
-        <div class="wrap">
-            <h1>Rescan EXIF</h1>
-            <form method="post" action="">
-                <?php submit_button("Rescan All Image EXIF Data"); ?>
-            </form>
-            <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $this->processAllImageAttachments();
-            }
-            ?>
-        </div>
-        <?php
+    /**
+     * @throws Throwable
+     */
+    public function getAdminSubmenuContents(): void {
+        $didPost = false;
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $this->processAllImageAttachments();
+            $didPost = true;
+        }
+
+        echo view("admin/exif-submenu", ["didPost" => $didPost])->render();
     }
 
-    public function processAllImageAttachments(): void
-    {
+    public function processAllImageAttachments(): void {
         global $wpdb;
 
-        $attachments = $wpdb->get_results(
-            "SELECT ID FROM $wpdb->posts
-        WHERE post_type = 'attachment'
-          AND post_mime_type LIKE 'image/%'"
-        );
+        $attachments = $wpdb->get_results("SELECT ID FROM $wpdb->posts WHERE post_type = 'attachment' AND post_mime_type LIKE 'image/%'");
 
         foreach ($attachments as $attachment) {
             $this->processSingleAttachment($attachment->ID);
         }
-
-        echo "<p>All EXIF metadata has been re-processed.</p>";
     }
 
     /**
@@ -90,10 +89,10 @@ class Exif
      * by default so we are basically adding them back.
      *
      * @param int $attachmentID The attachment ID.
+     *
      * @return void
      */
-    public function processSingleAttachment(int $attachmentID): void
-    {
+    public function processSingleAttachment(int $attachmentID): void {
         if (!wp_attachment_is_image($attachmentID)) {
             return;
         }

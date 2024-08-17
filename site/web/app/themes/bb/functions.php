@@ -2,24 +2,24 @@
 
 define("BB_RENDER_START", hrtime(true));
 
-define('BB_VERSION', '0.1.1');
-
 /**
  * ABSPATH is /bedrock/web/wp, dirname takes us back to /bedrock/web
  */
-define("BEDROCK_WEB_ROOT", dirname(ABSPATH));
-define("BEDROCK_WP_CONTENT_ROOT", BEDROCK_WEB_ROOT . "/app");
 define("THEME_ABSOLUTE_PATH", dirname(__FILE__));
-define(
-    "THEME_RELATIVE_PATH",
-    str_replace(BEDROCK_WEB_ROOT, "", THEME_ABSOLUTE_PATH)
-);
 
-define('BB_URI', home_url(THEME_RELATIVE_PATH));
-define('BB_HMR_HOST', 'http://localhost:5173');
-define('BB_HMR_URI', BB_HMR_HOST);
-define('BB_ASSETS_PATH', THEME_ABSOLUTE_PATH . '/dist');
-define('BB_ASSETS_URI', BB_URI . '/dist');
+/**
+ * THEME_RELATIVE_PATH can also be computed by the following snippet:
+ *
+ * define("BEDROCK_WEB_ROOT", dirname(ABSPATH));
+ * define("THEME_RELATIVE_PATH", str_replace(BEDROCK_WEB_ROOT, "",
+ *     THEME_ABSOLUTE_PATH));
+ *
+ * However, I am hardcoding this because local development with
+ * Bedrock is both supported on Trellis and LocalWP, both using
+ * different path structures. On my machine the theme directory
+ * is symlinked.
+ */
+const THEME_RELATIVE_PATH = "app/themes/bb";
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ require $composer;
 | The first thing we will do is schedule a new Acorn application container
 | to boot when WordPress is finished loading the theme. The application
 | serves as the "glue" for all the components of Laravel and is
-| the IoC container for the system binding all of the various parts.
+| the IoC container for the system binding all the various parts.
 |
 */
 
@@ -63,32 +63,32 @@ if (!function_exists('\Roots\bootloader')) {
 
 \Roots\bootloader()->boot();
 
-/*
-|--------------------------------------------------------------------------
-| Register Sage Theme Files
-|--------------------------------------------------------------------------
-|
-| Out of the box, Sage ships with categorically named theme files
-| containing common functionality and setup to be bootstrapped with your
-| theme. Simply add (or remove) files from the array below to change what
-| is registered alongside Sage.
-|
-*/
-
-collect(['setup', 'filters'])
-    ->each(function ($file) {
-        if (!locate_template($file = "app/{$file}.php", true, true)) {
-            wp_die(
-            /* translators: %s is replaced with the relative file path */
-                sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
-            );
-        }
-    });
-
-if (!function_exists('bb')) {
-    function bb(): \App\BB\BB {
-        return \App\BB\BB::get();
-    }
-}
-
-bb();
+/**
+ * Register the initial theme setup.
+ */
+add_action('after_setup_theme', function () {
+    /**
+     * 1. Disable full-site editing support.
+     * 2. Disable the default block patterns.
+     * 3. Enable plugins to manage the document title.
+     * 4. Enable post thumbnail support.
+     * 5. Enable responsive embed support.
+     * 6. Enable HTML5 markup support.
+     * 7. Enable selective refresh for widgets in customizer.
+     */
+    remove_theme_support('block-templates');  /* 1 */
+    remove_theme_support('core-block-patterns');  /* 2 */
+    add_theme_support('title-tag');  /* 3 */
+    add_theme_support('post-thumbnails');  /* 4 */
+    add_theme_support('responsive-embeds'); /* 5 */
+    add_theme_support('html5', [
+        'caption',
+        'comment-form',
+        'comment-list',
+        'gallery',
+        'search-form',
+        'script',
+        'style',
+    ]);  /* 6 */
+    add_theme_support('customize-selective-refresh-widgets'); /* 7 */
+}, 20);

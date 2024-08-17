@@ -1,9 +1,8 @@
 <?php
 
-namespace App\BB\Attributes;
+namespace App\Attributes;
 
 use Attribute;
-use App\BB\Attributes\Filter;
 
 #[Attribute(
     Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\BB\Attributes;
+namespace App\Attributes;
 
 interface WpHook
 {

@@ -2,6 +2,7 @@
 
 namespace App\View\Composers;
 
+use App\Vite;
 use Roots\Acorn\View\Composer;
 
 class App extends Composer
@@ -24,6 +25,7 @@ class App extends Composer
     {
         return [
             'siteName' => $this->siteName(),
+            'isRunningHot' => app(Vite::class)->isRunningHot(),
         ];
     }
 

@@ -1,14 +1,13 @@
 <?php
 
-namespace App\BB\Attributes;
+namespace App\Attributes;
 
 use Attribute;
 
 #[Attribute(
     Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE
 )]
-class Filter implements WpHook
-{
+class Filter implements WpHook {
     public function __construct(
         public string $hookName,
         public int $priority = 10,
@@ -16,8 +15,7 @@ class Filter implements WpHook
     ) {
     }
 
-    public function register(callable|array $method): void
-    {
+    public function register(callable|array $method): void {
         add_filter($this->hookName, $method, $this->priority, $this->acceptedArgs);
     }
 }

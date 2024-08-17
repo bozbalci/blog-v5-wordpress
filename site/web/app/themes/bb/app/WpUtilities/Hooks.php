@@ -1,9 +1,9 @@
 <?php
 
-namespace App\BB\Core;
+namespace App\WpUtilities;
 
+use App\Attributes\WpHook;
 use ReflectionAttribute;
-use App\BB\Attributes\WpHook;
 
 class Hooks
 {
