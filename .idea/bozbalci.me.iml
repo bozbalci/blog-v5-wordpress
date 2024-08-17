@@ -22,6 +22,7 @@
       <excludeFolder url="file://$MODULE_DIR$/site/web/app/mu-plugins/bedrock-disallow-indexing" />
       <excludeFolder url="file://$MODULE_DIR$/site/web/app/plugins/advanced-custom-fields" />
       <excludeFolder url="file://$MODULE_DIR$/site/web/app/plugins/wordpress-importer" />
+      <excludeFolder url="file://$MODULE_DIR$/trellis/vendor" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
