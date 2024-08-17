@@ -11,9 +11,6 @@ class ContentSinglePhoto extends Composer
         "partials.content-single-photo"
     ];
 
-    /**
-     * @throws Exception if the image is not found
-     */
     public function with(): array
     {
         $image = get_field("photo");

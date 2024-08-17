@@ -1,6 +1,6 @@
 <?php
 
-namespace App\WpUtilities;
+namespace App;
 
 use App\Attributes\WpHook;
 use ReflectionAttribute;

@@ -9,7 +9,7 @@ $type-scales: utopia.calculateTypeScale(
     'minWidth': 320,
     'maxWidth': 1200,
     'minFontSize': 16,
-    'maxFontSize': 20,
+    'maxFontSize': 18,
     'minTypeScale': 1.2,
     'maxTypeScale': 1.25,
     'positiveSteps': 5,
@@ -21,7 +21,7 @@ $space-scales: utopia.calculateSpaceScale(
     'minWidth': 320,
     'maxWidth': 1200,
     'minSize': 16,
-    'maxSize': 20,
+    'maxSize': 18,
     'positiveSteps': (
       1.5,
       2,

@@ -5,14 +5,11 @@ namespace App\Providers;
 
 use App\Attributes\Action;
 use App\Attributes\Filter;
-use App\WpUtilities\Hooks;
+use App\Hooks;
 use Illuminate\Support\ServiceProvider;
 use Throwable;
 
 class ExifServiceProvider extends ServiceProvider {
-    public function register(): void {
-    }
-
     public function boot(): void {
         Hooks::apply($this);
     }

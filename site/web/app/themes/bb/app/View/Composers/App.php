@@ -7,35 +7,18 @@ use Roots\Acorn\View\Composer;
 
 class App extends Composer
 {
-    /**
-     * List of views served by this composer.
-     *
-     * @var array
-     */
     protected static $views = [
         '*',
     ];
 
-    /**
-     * Data to be passed to view before rendering.
-     *
-     * @return array
-     */
-    public function with()
-    {
+    public function with(): array {
         return [
             'siteName' => $this->siteName(),
             'isRunningHot' => app(Vite::class)->isRunningHot(),
         ];
     }
 
-    /**
-     * Returns the site name.
-     *
-     * @return string
-     */
-    public function siteName()
-    {
+    public function siteName(): string {
         return get_bloginfo('name', 'display');
     }
 }

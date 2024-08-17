@@ -6,35 +6,19 @@ use Roots\Acorn\View\Composer;
 
 class Post extends Composer
 {
-    /**
-     * List of views served by this composer.
-     *
-     * @var array
-     */
     protected static $views = [
         'partials.content',
         'partials.content-*',
     ];
 
-    /**
-     * Data to be passed to view before rendering, but after merging.
-     *
-     * @return array
-     */
-    public function override()
-    {
+    public function override(): array {
         return [
             'title' => $this->title(),
             'pagination' => $this->pagination(),
         ];
     }
 
-    /**
-     * Retrieve the post title.
-     *
-     * @return string
-     */
-    public function title()
+    public function title(): string
     {
         if ($this->view->name() !== 'partials.page-header') {
             return get_the_title();
@@ -67,13 +51,7 @@ class Post extends Composer
         return get_the_title();
     }
 
-    /**
-     * Retrieve the pagination links.
-     *
-     * @return string
-     */
-    public function pagination()
-    {
+    public function pagination(): string {
         return wp_link_pages([
             'echo' => 0,
             'before' => '<p>' . __('Pages:', 'sage'),

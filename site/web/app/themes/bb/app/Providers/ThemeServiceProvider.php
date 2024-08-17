@@ -3,14 +3,16 @@
 namespace App\Providers;
 
 use App\Attributes\Action;
+use App\Hooks;
 use App\Vite;
-use App\WpUtilities\Hooks;
-use Roots\Acorn\Sage\SageServiceProvider;
 use Illuminate\Foundation\Vite as LaravelVite;
+use Roots\Acorn\Sage\SageServiceProvider;
 
 class ThemeServiceProvider extends SageServiceProvider {
     public function register(): void {
         parent::register();
+
+        $this->app->bind("app.hooks", Hooks::class);
 
         $this->app->singleton(LaravelVite::class, function () {
             $vite = new Vite();
@@ -37,6 +39,11 @@ class ThemeServiceProvider extends SageServiceProvider {
 
     #[Action("wp_enqueue_scripts")]
     public function front(): void {
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('classic-theme-styles');
+        // TODO re-add once we are a block theme:
+        // wp_dequeue_style('global-styles');
+
         $version = config("app.version");
         $vite    = app(LaravelVite::class);
 
