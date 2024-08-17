@@ -9,7 +9,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
+    "dev": "APP_URL=http://bedrock.local vite dev",
     "build-dev": "vite build --mode development",
     "build": "vite build",
     "lint": "prettier . --check; stylelint ./resources/styles/**/*.{css,scss}; eslint; composer lint",

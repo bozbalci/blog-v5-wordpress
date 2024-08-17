@@ -12,7 +12,19 @@ class ThemeServiceProvider extends SageServiceProvider {
     public function register(): void {
         parent::register();
 
-        $this->app->singleton(LaravelVite::class, Vite::class);
+        $this->app->singleton(LaravelVite::class, function () {
+            $vite = new Vite();
+
+            $hotFile = THEME_ABSOLUTE_PATH . "/dist/hot";
+
+            $vite->useHotFile($hotFile)->useBuildDirectory("dist");
+
+            $vite->macro("describe", function () {
+                var_dump($this);
+            });
+
+            return $vite;
+        });
 
         $this->app->usePublicPath(THEME_ABSOLUTE_PATH);
     }
@@ -27,16 +39,25 @@ class ThemeServiceProvider extends SageServiceProvider {
     public function front(): void {
         $version = config("app.version");
         $vite    = app(LaravelVite::class);
-        $hotFile = THEME_ABSOLUTE_PATH . "/dist/hot";
 
-        $vite->useHotFile($hotFile)
-             ->useBuildDirectory("dist");
-
-        echo $hotFile;
-        echo $vite->isRunningHot();
-        echo $vite("resources/styles/theme.scss");
-
-//        wp_enqueue_style("theme", $vite->asset("resources/styles/theme.scss"), [], $version);
-        wp_enqueue_script("theme", $vite->asset("resources/scripts/entry.js"), [], $version);
+        if ($vite->isRunningHot()) {
+            /**
+             * This includes the HMR client in the document as well.
+             */
+            echo $vite(["resources/styles/theme.scss", "resources/scripts/entry.js"]);
+        } else {
+            wp_enqueue_style(
+                "theme",
+                $vite->asset("resources/styles/theme.scss"),
+                [],
+                $version
+            );
+            wp_enqueue_script(
+                "theme",
+                $vite->asset("resources/scripts/entry.js"),
+                [],
+                $version
+            );
+        }
     }
 }

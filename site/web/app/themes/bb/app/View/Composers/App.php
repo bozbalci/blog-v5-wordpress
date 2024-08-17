@@ -2,7 +2,7 @@
 
 namespace App\View\Composers;
 
-use App\Vite;
+use Illuminate\Foundation\Vite;
 use Roots\Acorn\View\Composer;
 
 class App extends Composer
