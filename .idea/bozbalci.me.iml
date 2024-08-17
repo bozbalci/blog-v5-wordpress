@@ -4,6 +4,9 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/site/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/site/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/site/web/wp/wp-includes/sodium_compat/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/graham-campbell/result-type" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/oscarotero/env" />
@@ -17,7 +20,6 @@
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/symfony/polyfill-mbstring" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/symfony/polyfill-php80" />
       <excludeFolder url="file://$MODULE_DIR$/site/vendor/vlucas/phpdotenv" />
-      <excludeFolder url="file://$MODULE_DIR$/site/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/site/web/app/cache/acorn" />
       <excludeFolder url="file://$MODULE_DIR$/site/web/app/mu-plugins/bedrock-disallow-indexing" />
       <excludeFolder url="file://$MODULE_DIR$/site/web/app/plugins/advanced-custom-fields" />
