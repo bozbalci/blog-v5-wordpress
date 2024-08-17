@@ -1,3 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><g transform="matrix(41.666666666666664,0,0,41.666666666666664,9.273897329966246,4.079427162806212)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="24" height="24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" class="icon site-logo">
-  <path d="M486.91 478.08v9.21H356.86l-28.67-28.67-91.13-254.93h-17.92c-6.14 0-9.22 1.54-11.26 11.77l-38.4 176.1H50.18l-34.82-36.35 45.57-212.45c13.31-58.87 55.81-94.7 117.25-94.7h35.33c42.5 0 73.73 13.82 96.25 36.86l8.7 8.7V20.43h135.17l31.23 31.23v110.06H371.2c3.58 8.19 7.17 16.38 10.24 25.08l105.47 291.28Zm-56.32-41.47-98.3-270.8c-22.53-61.43-55.81-95.73-118.78-95.73h-35.33c-53.25 0-85.5 31.23-95.74 77.3l-41.98 193.5h82.94l34.3-158.69c3.58-16.89 13.31-28.67 32.77-28.67h22.02c23.55 0 35.33 16.38 45.06 43l86.02 240.09h87.04Zm-52.23-320.97V39.37H337.4v76.28h40.96Zm60.42 0V39.37h-40.45v76.28h40.45Z"></path>
-</svg></svg></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><rect width="1000" height="1000" rx="250" ry="250" fill="#fcfdfc"></rect><g transform="matrix(33.333333333333336,0,0,33.333333333333336,104.84999152024585,103.23334566752112)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="24" height="24"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #26997b;
+      }
+    </style>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)  -->
+  <g>
+    <g id="Layer_1">
+      <path class="cls-1" d="M22.8,22.4v.4h-6.1l-1.3-1.3-4.3-11.9h-.8c-.3,0-.4,0-.5.6l-1.8,8.3H2.4l-1.6-1.7L2.9,6.7c.6-2.8,2.6-4.4,5.5-4.4h1.7c2,0,3.5.6,4.5,1.7l.4.4V1h6.3l1.5,1.5v5.2h-5.3c.2.4.3.8.5,1.2,0,0,4.9,13.7,4.9,13.7ZM20.2,20.5l-4.6-12.7c-1.1-2.9-2.6-4.5-5.6-4.5h-1.7c-2.5,0-4,1.5-4.5,3.6l-2,9.1h3.9l1.6-7.4c.2-.8.6-1.3,1.5-1.3h1c1.1,0,1.7.8,2.1,2l4,11.3h4.1,0ZM17.7,5.4V1.8h-1.9v3.6h1.9ZM20.6,5.4V1.8h-1.9v3.6h1.9Z"></path>
+    </g>
+  </g>
+</svg></svg></g></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><rect width="1000" height="1000" rx="250" ry="250" fill="#111210"></rect><g transform="matrix(33.333333333333336,0,0,33.333333333333336,104.84999152024585,103.23334566752112)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="24" height="24"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #27b08b;
+      }
+    </style>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)  -->
+  <g>
+    <g id="Layer_1">
+      <path class="cls-1" d="M22.8,22.4v.4h-6.1l-1.3-1.3-4.3-11.9h-.8c-.3,0-.4,0-.5.6l-1.8,8.3H2.4l-1.6-1.7L2.9,6.7c.6-2.8,2.6-4.4,5.5-4.4h1.7c2,0,3.5.6,4.5,1.7l.4.4V1h6.3l1.5,1.5v5.2h-5.3c.2.4.3.8.5,1.2,0,0,4.9,13.7,4.9,13.7ZM20.2,20.5l-4.6-12.7c-1.1-2.9-2.6-4.5-5.6-4.5h-1.7c-2.5,0-4,1.5-4.5,3.6l-2,9.1h3.9l1.6-7.4c.2-.8.6-1.3,1.5-1.3h1c1.1,0,1.7.8,2.1,2l4,11.3h4.1,0ZM17.7,5.4V1.8h-1.9v3.6h1.9ZM20.6,5.4V1.8h-1.9v3.6h1.9Z"></path>
+    </g>
+  </g>
+</svg></svg></g></svg></g></svg>

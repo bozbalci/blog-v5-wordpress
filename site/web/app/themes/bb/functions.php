@@ -8,6 +8,8 @@ define("BB_RENDER_START", hrtime(true));
 define("THEME_ABSOLUTE_PATH", dirname(__FILE__));
 
 /**
+ * Relative path of the theme directory from the server root.
+ *
  * THEME_RELATIVE_PATH can also be computed by the following snippet:
  *
  * define("BEDROCK_WEB_ROOT", dirname(ABSPATH));

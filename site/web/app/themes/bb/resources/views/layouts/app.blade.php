@@ -4,8 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" type="image/svg+xml" href="{{ url("favicon.svg") }}">
-  <link rel="icon" type="image/png" href="public/favicon.png">
+  {{-- Favicon --}}
+  <link rel="icon" type="image/svg+xml"
+        href="{{ url(THEME_RELATIVE_PATH . "/public/favicon.svg?v=" . config("app.version")) }}">
+{{--  <link rel="icon" type="image/png"--}}
+{{--        href="{{ url(THEME_RELATIVE_PATH . "/public/favicon.png?v=" . config("app.version")) }}">--}}
 
   @php(do_action('get_header'))
   @php(wp_head())
